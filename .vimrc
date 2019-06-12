@@ -9,7 +9,7 @@ set laststatus=2
 "显示光标当前位置
 set ruler
 "开启行号显示
-set cursorline
+"set cursorline
 "高亮显示搜索结果
 set hlsearch
 
@@ -165,3 +165,7 @@ set langmenu=en_US
 let $LANG= 'en_US'
 " 关闭高亮显示括号
 let loaded_matchparen = 1
+" 去除vi一致性
+set nocompatible
+" 使用退格
+set backspace=indent,eol,start
