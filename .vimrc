@@ -1,5 +1,5 @@
-" 定义快捷键的前缀，即<Leader>
-let mapleader=";"
+" 定义快捷键的前缀，即<Leader> 影响f，使用缺省配置
+" let mapleader=";"
 " 开启语法高亮功能
 syntax enable
 " 允许用指定语法高亮配色方案替换默认方案
@@ -106,7 +106,7 @@ call setline(1,"#!/bin/bash")
 endf
 map <F2> : call AddTitle() <cr>
 
-cmap w!! :w !sudo tee >/dev/null %
+cmap w!! :w !sudo tee % >/dev/null
 set encoding=UTF-8
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
@@ -169,3 +169,7 @@ let loaded_matchparen = 1
 set nocompatible
 " 使用退格
 set backspace=indent,eol,start
+" 命令行模式展开当前文件所在目录
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" 激活matchin
+runtime macros/matchit.vim
