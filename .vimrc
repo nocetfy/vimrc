@@ -51,7 +51,7 @@ let g:miniBufExplMapWindowNavVim = 1
 set t_Co=256
 set background=light
 colorscheme primary
-"set background=dark
+" set background=dark
 
 nmap <F8> :TagbarToggle<CR>
 
