@@ -1,4 +1,3 @@
-" 定义快捷键的前缀，即<Leader> 影响f，使用缺省配置
 " let mapleader=";"
 " 开启语法高亮功能
 syntax enable
@@ -173,3 +172,63 @@ set backspace=indent,eol,start
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " 激活matchin
 runtime macros/matchit.vim
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+" airline增强
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.dirty='⚡'
+nnoremap <C-S-tab> :bprevious<CR>
+nnoremap <C-Tab> :bn<CR>
+" YouCompleteMe
+" Python Semantic Completion
+let g:ycm_python_binary_path = '/usr/bin/python3'
+" C family Completion Path
+let g:ycm_global_ycm_extra_conf='~/py/.ycm_extra_conf.py'
+" 跳转快捷键
+nnoremap <c-k> :YcmCompleter GoToDeclaration<CR>|
+nnoremap <c-h> :YcmCompleter GoToDefinition<CR>|
+nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|
+" 停止提示是否载入本地ycm_extra_conf文件
+let g:ycm_confirm_extra_conf = 0
+" 语法关键字补全
+let g:ycm_seed_identifiers_with_syntax = 1
+" 开启 YCM 基于标签引擎
+let g:ycm_collect_identifiers_from_tags_files = 1
+" 从第2个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion=2
+" 在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+" 在字符串输入中也能补全
+let g:ycm_complete_in_strings = 1
+" 注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" 停止显示补全列表(防止列表影响视野), 可以按<C-Space>重新弹出
+"let g:ycm_key_list_stop_completion = ['<C-y>']
+" 两字符语义自动补全
+let g:ycm_semantic_triggers =  {
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
+" 白名单
+let g:ycm_filetype_whitelist = { 
+			\ "c":1,
+			\ "cpp":1, 
+			\ "py":1,
+			\ "sh":1,
+			\ "java":1,
+			\ "go":1,
+			\ "javascript":1,
+			\ }
