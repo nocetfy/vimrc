@@ -235,3 +235,8 @@ let g:ycm_filetype_whitelist = {
 			\ "go":1,
 			\ "javascript":1,
 			\ }
+" 关闭高亮
+nnoremap <silent> <C-l> "<C-u>nohlsearch<CR><C-l>
+" 为&保留标志位
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
