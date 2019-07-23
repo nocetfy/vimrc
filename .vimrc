@@ -229,7 +229,7 @@ let g:ycm_semantic_triggers =  {
 let g:ycm_filetype_whitelist = { 
 			\ "c":1,
 			\ "cpp":1, 
-			\ "py":1,
+			\ "python":1,
 			\ "sh":1,
 			\ "java":1,
 			\ "go":1,
