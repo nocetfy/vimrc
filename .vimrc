@@ -240,3 +240,5 @@ nnoremap <silent> <C-l> "<C-u>nohlsearch<CR><C-l>
 " 为&保留标志位
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
+"切换buffer
+nnoremap <S-tab>   :bnext<CR>
