@@ -12,15 +12,8 @@ compilation_database_folder = ''
 # These are the compilation flags that will be used in case there's no
 # compilation database set.
 flags = [
-    '-Wall',
-    '-std=c++11',
-    '-stdlib=libc++',
-    '-x',
-    'c++',
-    '-I',
-    '.',
-    '-isystem',
-    '/usr/lib/c++/v1'
+    '-Wall', '-std=c++11', '-stdlib=libc++', '-x', 'c++', '-I', '.',
+    '-isystem', '/usr/lib/c++/v1'
 ]
 
 if compilation_database_folder:
@@ -70,12 +63,9 @@ def FlagsForFile(filename):
         final_flags = PrepareClangFlags(
             MakeRelativePathsInFlagsAbsolute(
                 compilation_info.compiler_flags_,
-                compilation_info.compiler_working_dir_),
-            filename)
+                compilation_info.compiler_working_dir_), filename)
     else:
         relative_to = DirectoryOfThisScript()
         final_flags = MakeRelativePathsInFlagsAbsolute(flags, relative_to)
 
-    return {
-        'flags': final_flags,
-        'do_cache': True}
+    return {'flags': final_flags, 'do_cache': True}
