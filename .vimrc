@@ -219,8 +219,12 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " 停止显示补全列表(防止列表影响视野), 可以按<C-Space>重新弹出
 "let g:ycm_key_list_stop_completion = ['<C-y>']
 " 补全时enter不换行
-let g:ycm_key_list_stop_completion = ['<CR>']
-" 两字符语义自动补全
+"let g:ycm_key_list_stop_completion = ['<CR>']
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+" 代替方向键
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
+" \" 两字符语义自动补全
 let g:ycm_semantic_triggers =  {
 			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
 			\ 'cs,lua,javascript': ['re!\w{2}'],
