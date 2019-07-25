@@ -101,10 +101,15 @@ set tags+=~/.vim/tags/cpp_src/tags
 ""endfunction
 
  function AddTitle()
-call setline(1,"#!/bin/bash")
-endf
+    call setline(1,"#!/bin/bash")
+ endf
 map <F2> : call AddTitle() <cr>
 
+ function PyTitle()
+     call setline(1,"#!/usr/bin/env python3")
+     call setline(2,"# -*- coding: utf-8 -*-")
+ endf
+map <F3> : call PyTitle() <CR> 
 cmap w!! :w !sudo tee % >/dev/null
 set encoding=UTF-8
 set langmenu=zh_CN.UTF-8
