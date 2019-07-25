@@ -229,6 +229,9 @@ inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 " 代替方向键
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
+" 关闭语法检查
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 " \" 两字符语义自动补全
 let g:ycm_semantic_triggers =  {
 			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
