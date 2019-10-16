@@ -84,22 +84,6 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 "stl自动补全
 set tags+=~/.vim/tags/cpp_src/tags
 
-"":inoremap ( ()<ESC>i
-""    :inoremap ) <c-r>=ClosePair(')')<CR>
-""    :inoremap { {<CR>}<ESC>O
-""    :inoremap } <c-r>=ClosePair('}')<CR>
-""    :inoremap [ []<ESC>i
-""    :inoremap ] <c-r>=ClosePair(']')<CR>
-""    :inoremap " ""<ESC>i
-""    :inoremap ' ''<ESC>i
-""function! ClosePair(char)
-""    if getline('.')[col('.') - 1] == a:char
-""        return "\<Right>"
-""    else
-""        return a:char
-""    endif
-""endfunction
-
  function AddTitle()
     call setline(1,"#!/bin/bash")
  endf
