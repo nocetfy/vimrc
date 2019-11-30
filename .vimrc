@@ -40,7 +40,7 @@ set wildmenu
 set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set nofoldenable
-map <C-n> :NERDTreeToggle<CR>
+map <F10> :NERDTreeToggle<CR>
 
 let g:miniBufExplMaxSize = 2
 let g:miniBufExplMapWindowNavArrows = 1 
