@@ -183,54 +183,54 @@ nnoremap <C-S-tab> :bprevious<CR>
 nnoremap <C-Tab> :bn<CR>
 " YouCompleteMe
 " Python Semantic Completion
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_server_python_interpreter='/usr/bin/python3'
+"let g:ycm_python_binary_path = '/usr/bin/python3'
+"let g:ycm_server_python_interpreter='/usr/bin/python3'
 " C family Completion Path
-let g:ycm_global_ycm_extra_conf='~/py/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf='~/py/.ycm_extra_conf.py'
 " 跳转快捷键
-nnoremap <c-k> :YcmCompleter GoToDeclaration<CR>|
-nnoremap <c-h> :YcmCompleter GoToDefinition<CR>|
-nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|
+"nnoremap <c-k> :YcmCompleter GoToDeclaration<CR>|
+"nnoremap <c-h> :YcmCompleter GoToDefinition<CR>|
+"nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|
 " 停止提示是否载入本地ycm_extra_conf文件
-let g:ycm_confirm_extra_conf = 0
+"let g:ycm_confirm_extra_conf = 0
 " 语法关键字补全
-let g:ycm_seed_identifiers_with_syntax = 1
+"let g:ycm_seed_identifiers_with_syntax = 1
 " 开启 YCM 基于标签引擎
-let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_collect_identifiers_from_tags_files = 1
 " 从第2个键入字符就开始罗列匹配项
-let g:ycm_min_num_of_chars_for_completion=2
+"let g:ycm_min_num_of_chars_for_completion=2
 " 在注释输入中也能补全
-let g:ycm_complete_in_comments = 1
+"let g:ycm_complete_in_comments = 1
 " 在字符串输入中也能补全
-let g:ycm_complete_in_strings = 1
+"let g:ycm_complete_in_strings = 1
 " 注释和字符串中的文字也会被收入补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " 停止显示补全列表(防止列表影响视野), 可以按<C-Space>重新弹出
 "let g:ycm_key_list_stop_completion = ['<C-y>']
 " 补全时enter不换行
-let g:ycm_key_list_stop_completion = ['<CR>']
+"let g:ycm_key_list_stop_completion = ['<CR>']
 "inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 " 代替方向键
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
+"inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
+"inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 " 关闭语法检查
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_enable_diagnostic_highlighting = 0
+"let g:ycm_enable_diagnostic_signs = 0
+"let g:ycm_enable_diagnostic_highlighting = 0
 " \" 两字符语义自动补全
-let g:ycm_semantic_triggers =  {
-			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-			\ 'cs,lua,javascript': ['re!\w{2}'],
-			\ }
+"let g:ycm_semantic_triggers =  {
+"			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+"			\ 'cs,lua,javascript': ['re!\w{2}'],
+"			\ }
 " 白名单
-let g:ycm_filetype_whitelist = { 
-			\ "c":1,
-			\ "cpp":1, 
-			\ "python":1,
-			\ "sh":1,
-			\ "java":1,
-			\ "go":1,
-			\ "javascript":1,
-			\ }
+"let g:ycm_filetype_whitelist = { 
+"			\ "c":1,
+"			\ "cpp":1, 
+"			\ "python":1,
+"			\ "sh":1,
+"			\ "java":1,
+"			\ "go":1,
+"			\ "javascript":1,
+"			\ }
 " 关闭高亮
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
@@ -239,3 +239,5 @@ nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 "切换buffer
 nnoremap <S-tab>   :bnext<CR>
+" json
+autocmd FileType json syntax match Comment +\/\/.\+$+
