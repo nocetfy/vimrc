@@ -1,4 +1,3 @@
-" let mapleader=";"
 " 开启语法高亮功能
 syntax enable
 " 允许用指定语法高亮配色方案替换默认方案
@@ -124,7 +123,8 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set nofoldenable
-
+" 关闭回车自动注释新行
+au BufEnter * set fo-=c fo-=r fo-=o
 " 设置语言
 set langmenu=en_US
 let $LANG= 'en_US'
