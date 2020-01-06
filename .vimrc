@@ -1,5 +1,5 @@
 " 更换leader为空格
-let mapleader = "\<Space>"
+let mapleader = ";"
 " 设置vim中打开的shell
 set shell=/usr/bin/fish
 " 开启语法高亮功能
