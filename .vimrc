@@ -14,9 +14,8 @@ set ruler
 "set cursorline
 "高亮显示搜索结果
 set hlsearch
-
+" 鼠标
 set mouse=a
-
 set cindent
 set nu
 " 自适应不同语言的智能缩进
@@ -44,29 +43,13 @@ set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set nofoldenable
 map <F10> :NERDTreeToggle<CR>
-
-let g:miniBufExplMaxSize = 2
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapWindowNavVim = 1 
-
 "配色
 set t_Co=256
 set background=light
 colorscheme primary
 "colorscheme Tomorrow-Night-Bright
- "set background=dark
-
+"set background=dark
 noremap <F8> :LeaderfFunction!<cr>
-
-function! CleverTab()
-    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-       return "\<Tab>"
-    else
-       return "\<C-N>"
-    endif 
-    endfunction    
-    inoremap <Tab> <C-R>=CleverTab()<CR>
-
 " 开启文件类型侦测
 filetype on
 " 根据侦测到的不同类型加载对应的插件
@@ -120,10 +103,7 @@ nmap <Leader>M %
 " 让配置变更立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
-" 可视化缩进
-
 " 基于缩进或语法进行代码折叠
-"set foldmethod=indent
 set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set nofoldenable
@@ -134,8 +114,6 @@ set langmenu=en_US
 let $LANG= 'en_US'
 " 关闭高亮显示括号
 let loaded_matchparen = 1
-" 去除vi一致性
-set nocompatible
 " 使用退格
 set backspace=indent,eol,start
 " 命令行模式展开当前文件所在目录
