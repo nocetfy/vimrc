@@ -34,6 +34,8 @@ set incsearch
 set ignorecase
 " 关闭兼容模式
 set nocompatible
+" 关闭ex模式
+nnoremap Q <nop>
 " vim 自身命令行模式智能补全
 set wildmenu
 
