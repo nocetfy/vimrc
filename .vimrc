@@ -16,8 +16,12 @@ set ruler
 set hlsearch
 " 鼠标
 set mouse=a
+" cindent缩进格式
 set cindent
+" 行号
 set nu
+" 相对行号
+"set relativenumber
 " 自适应不同语言的智能缩进
 filetype indent on
 " 将制表符扩展为空格
@@ -38,24 +42,38 @@ set nocompatible
 nnoremap Q <nop>
 " vim 自身命令行模式智能补全
 set wildmenu
-
 " 基于缩进或语法进行代码折叠
 "set foldmethod=indent
 set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set nofoldenable
-map <F10> :NERDTreeToggle<CR>
+set encoding=UTF-8
+language message zh_CN.UTF-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencoding=utf-8
+set timeoutlen=1000 ttimeoutlen=0
+" 关闭回车自动注释新行
+au BufEnter * set fo-=c fo-=r fo-=o
+" 设置语言
+set langmenu=en_US
+let $LANG= 'en_US'
+" 关闭高亮显示括号
+"let loaded_matchparen = 1
+" 使用退格
+set backspace=indent,eol,start
+filetype on
+" 根据侦测到的不同类型加载对应的插件
+filetype plugin indent on
 "配色
 set t_Co=256
 set background=light
 colorscheme primary
 "colorscheme Tomorrow-Night-Bright
 "set background=dark
+
+map <F10> :NERDTreeToggle<CR>
 noremap <F8> :LeaderfFunction!<cr>
 " 开启文件类型侦测
-filetype on
-" 根据侦测到的不同类型加载对应的插件
-filetype plugin indent on
 
  function AddTitle()
     call setline(1,"#!/bin/bash")
@@ -68,12 +86,6 @@ map <F2> : call AddTitle() <cr>
  endf
 map <F3> : call PyTitle() <CR> 
 cmap w!! :w !sudo tee % >/dev/null
-set encoding=UTF-8
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set fileencoding=utf-8
-set timeoutlen=1000 ttimeoutlen=0
 
 " 定义快捷键到行首和行尾
 nmap LB 0
@@ -104,42 +116,11 @@ nnoremap <Leader>jw <C-W>j
 nmap <Leader>M %
 " 让配置变更立即生效
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
-
-" 基于缩进或语法进行代码折叠
-set foldmethod=syntax
-" 启动 vim 时关闭折叠代码
-set nofoldenable
-" 关闭回车自动注释新行
-au BufEnter * set fo-=c fo-=r fo-=o
-" 设置语言
-set langmenu=en_US
-let $LANG= 'en_US'
-" 关闭高亮显示括号
-let loaded_matchparen = 1
-" 使用退格
-set backspace=indent,eol,start
 " 命令行模式展开当前文件所在目录
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " 激活matchin
 runtime macros/matchit.vim
-
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-" airline增强
-if !exists('g:airline_symbols')
-let g:airline_symbols = {}
-endif
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.dirty='⚡'
+" 切换buffer
 nnoremap <C-S-tab> :bprevious<CR>
 nnoremap <C-Tab> :bn<CR>
 " 关闭高亮
@@ -152,6 +133,24 @@ xnoremap & :&&<CR>
 nnoremap <S-tab>   :bnext<CR>
 " json
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
+" airline增强
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.dirty='⚡'
 " coc
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -281,6 +280,21 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" yank list
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+" tab to select
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 " lightline
 let g:lightline = {
   \ 'active': {
