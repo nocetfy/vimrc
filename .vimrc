@@ -58,7 +58,7 @@ au BufEnter * set fo-=c fo-=r fo-=o
 set langmenu=en_US
 let $LANG= 'en_US'
 " 关闭高亮显示括号
-"let loaded_matchparen = 1
+let loaded_matchparen = 1
 " 使用退格
 set backspace=indent,eol,start
 filetype on
@@ -68,7 +68,6 @@ filetype plugin indent on
 set t_Co=256
 set background=light
 colorscheme primary
-"colorscheme Tomorrow-Night-Bright
 "set background=dark
 
 map <F10> :NERDTreeToggle<CR>
@@ -78,13 +77,13 @@ noremap <F8> :LeaderfFunction!<cr>
  function AddTitle()
     call setline(1,"#!/bin/bash")
  endf
-map <F2> : call AddTitle() <cr>
+"map <F2> : call AddTitle() <cr>
 
  function PyTitle()
      call setline(1,"#!/usr/bin/env python3")
      call setline(2,"# -*- coding: utf-8 -*-")
  endf
-map <F3> : call PyTitle() <CR> 
+map <F2> : call PyTitle() <CR> 
 cmap w!! :w !sudo tee % >/dev/null
 
 " 定义快捷键到行首和行尾
@@ -123,17 +122,25 @@ runtime macros/matchit.vim
 " 切换buffer
 nnoremap <C-S-tab> :bprevious<CR>
 nnoremap <C-Tab> :bn<CR>
+nnoremap <S-tab>   :bnext<CR>
 " 关闭高亮
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
 " 为&保留标志位
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
-"切换buffer
-nnoremap <S-tab>   :bnext<CR>
 " json
 autocmd FileType json syntax match Comment +\/\/.\+$+
-
+" debug
+"let g:vimspector_enable_mappings = 'HUMAN'
+"packadd! vimspector
+let g:clang_format#code_style='llvm'
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11",
+            \ "BreakBeforeBraces" : "Stroustrup"}
+autocmd FileType c ClangFormatAutoEnable
 " airline增强
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
